@@ -24,6 +24,12 @@ html, body, #root {
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* When login fails, change background to red */
+.login-form.login-failed {
+  background-color: #f87171;  /* Red color */
 }
 
 /* Centered heading */

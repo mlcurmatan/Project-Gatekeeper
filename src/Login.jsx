@@ -4,6 +4,7 @@ import './Login.css';
 function Login({ setIsLoggedIn }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loginFailed, setLoginFailed] = useState(false);  // New state for login failure
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,14 +12,19 @@ function Login({ setIsLoggedIn }) {
     if (email === 'a@a.com' && password === '1234') {
       alert('Login successful');
       setIsLoggedIn(true);
+      setLoginFailed(false); // Reset login failed state
     } else {
       alert('Invalid credentials');
+      setLoginFailed(true);  // Set login failed state
     }
   };
 
   return (
     <div className="login-page">
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form
+        className={`login-form ${loginFailed ? 'login-failed' : ''}`}  // Add class conditionally
+        onSubmit={handleSubmit}
+      >
         <h2>Login</h2>
 
         <input
