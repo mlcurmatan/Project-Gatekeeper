@@ -1,22 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Login from './Login';
-
+import './App.css';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  
+  useEffect(() => {
+    console.log('App rendered or isLoggedIn changed:', isLoggedIn);
+  }, [isLoggedIn]);
+
   return (
-    <div>
+    <div className="app-container">
       {!isLoggedIn ? (
-        <div>
         <Login setIsLoggedIn={setIsLoggedIn} />
-          useEffect(() = {console.log('App rendered or isLoggedIn changed:', isLoggedIn)}, [isLoggedIn]);
-        </div>
       ) : (
-        <div>
-        <h2>Welcome</h2>
-        <button onClick={() => setIsLoggedIn(false)}>Logout</button>
-        useEffect(() = {console.log('App rendered or isLoggedIn changed:', isLoggedIn)}, [isLoggedIn]);
+        <div className="welcome-container">
+          <h2>Welcome</h2>
+          <button onClick={() => setIsLoggedIn(false)}>Logout</button>
         </div>
       )}
     </div>
